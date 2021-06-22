@@ -1,14 +1,27 @@
 package dto;
 
+import java.io.Serializable;
+import java.util.Comparator;
 import java.util.Objects;
 
-public class Person {
+public class Person implements Serializable {
     private String firstName;
     private String lastName;
+
+    public static final Comparator<Person> COMPARE_BY_PERSON = new Comparator<Person>() {
+        @Override
+        public int compare(Person lhs, Person rhs) {
+            return lhs.getLastName().compareTo(rhs.getLastName());
+        }
+    };
 
     public Person(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    public Person() {
+
     }
 
     public String getFirstName() {
