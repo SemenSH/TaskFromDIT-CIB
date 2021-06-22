@@ -8,12 +8,7 @@ public class Person implements Serializable {
     private String firstName;
     private String lastName;
 
-    public static final Comparator<Person> COMPARE_BY_PERSON = new Comparator<Person>() {
-        @Override
-        public int compare(Person lhs, Person rhs) {
-            return lhs.getLastName().compareTo(rhs.getLastName());
-        }
-    };
+    public static final Comparator<Person> COMPARE_BY_PERSON = Comparator.comparing(Person::getLastName);
 
     public Person(String firstName, String lastName) {
         this.firstName = firstName;
